@@ -1,0 +1,186 @@
+env_configs:
+    # Path configs
+    train_reset_config_path: '/home/xichen/Documents/master_thesis_xi_chen/data/pickles/problem_train'
+    test_reset_config_path: '/home/xichen/Documents/master_thesis_xi_chen/data/pickles/problem_test'
+    meta_scenario_path: '/home/xichen/Documents/master_thesis_xi_chen/data/pickles/meta_scenario'
+    # Regard goal as reached if goal position shape is reached
+    # TODO: remove after other goal observations (velocity interval and orientation interval) are implemented
+    relax_is_goal_reached: False
+
+    # Flatten observation into a vector for NN input
+    flatten_observation: True
+
+    # Ego-related observation flags and settings
+    observe_v_ego: True
+    observe_a_ego: True
+    observe_heading: True
+    observe_steering_angle: True
+    observe_global_turn_rate: False
+    observe_lat_offset: True
+    observe_left_marker_distance: True
+    observe_right_marker_distance: True
+    observe_left_road_edge_distance: True
+    observe_right_road_edge_distance: True
+
+    # Goal-related observation flags and settings
+    observe_distance_goal_long: True
+    observe_distance_goal_lat: True
+    observe_distance_goal_long_lane: False
+    observe_distance_goal_long_advance: False
+    observe_distance_goal_lat_advance: False
+    max_lane_merge_range: 5000.
+
+    # Future lateral offset observations
+    observe_static_extrapolated_positions: False
+    static_extrapolation_samples: [1, 2, 5, 10, 25]
+    observe_dynamic_extrapolated_positions: False
+    dynamic_extrapolation_samples: [0.1, 0.25, 0.5, 1, 2]
+
+    # Surrounding-related observation flags and settings
+    dummy_rel_vol: 0.
+    dummy_dist_rate: 0.
+    dummy_dist: 110.
+
+    # Lane-based rectangular surrounding observation flags and settings
+    observe_lane_rect_surrounding: False
+    lane_rect_sensor_range_length: 100.
+    lane_rect_sensor_range_width: 7.
+
+    # Lane-based circular surrounding observation flags and settings
+    observe_lane_circ_surrounding: True
+    lane_circ_sensor_range_radius: 100.
+
+    # Lidar-based elliptical surrounding observation flags and settings
+    observe_lidar_elli_surrounding: False
+    lidar_elli_num_beams: 20
+    lidar_elli_sensor_range_semi_major_axis: 100.
+    lidar_elli_sensor_range_semi_minor_axis: 100.
+
+    # Termination-related observation flags and settings
+    observe_remaining_steps: False
+    observe_is_time_out: True
+    observe_is_collision: True
+    observe_is_off_road: True
+    observe_is_goal_reached: True
+    observe_is_friction_violation: True
+
+    # Render settings (only if corresponding observations are available)
+    render_road_boundaries: False
+    render_ego_lanelet_center_vertices: False
+    render_lane_rect_surrounding_obstacles: True
+    render_lane_circ_surrounding_obstacles: True
+    render_lidar_elli_surrounding_obstacles: True
+    render_lane_rect_surrounding_area: True
+    render_lane_circ_surrounding_area: True
+    render_lidar_elli_surrounding_beams: True
+    render_static_extrapolated_positions: True
+    render_dynamic_extrapolated_positions: True
+    render_global_ccosy: True
+    render_local_ccosy: False
+
+    # Render settings regarding the kind of printed results
+    render_skip_timesteps: 1
+    render_combine_frames: False
+
+    # Reward settings
+    reward_type: sparse_reward
+    reward_goal_reached: 50.
+    reward_collision: -20.
+    reward_off_road: -20.
+    reward_time_out: -10.
+    reward_friction_violation: 0. # -10. # -2.
+    reward_get_close_coefficient: 1.0
+    reward_obs_distance_coefficient: 0.1
+    reward_goal_distance_coefficient: 0.2
+    reward_stay_in_road_center: 0.1 #1.
+    reward_reverse_driving: 0. # -10.
+    reward_friction: 0. # 0.06
+
+    # TERMINATIONS
+    ## Observation-related (effective only if corresponding observation available)
+    terminate_on_goal_reached: True
+    terminate_on_collision: True
+    terminate_on_off_road: True
+    terminate_on_time_out: True
+    terminate_on_friction_violation: False
+
+# A user-specified file for setting the sampling methods and intervals when optimizing observation configurations.
+# Currently supported sampling methods: categorical, uniform, loguniform.
+# During execution, this setting is read in by `./run_stable_baselines.py` and
+# passed to `./utils_run/observation_configs_opt.py` for optimization.
+# Simply comment out the items which are not to be optimized, and the values from `configs.yaml` will be taken.
+
+sampling_setting_observation_configs:
+#  observe_a_ego: !!python/tuple
+#    - categorical
+#    - - true
+#      - false
+  # observe_a_ego:
+  #   categorical: [True, False]
+  # observe_distance_goal_lat:
+  #   categorical: [True, False]
+  # observe_distance_goal_lat_advance:
+  #   categorical: [True, False]
+  # observe_distance_goal_long:
+  #     categorical: [True, False]
+  # observe_distance_goal_long_advance:
+  #     categorical: [True, False]
+  # observe_distance_goal_long_lane:
+  #     categorical: [True, False]
+  # observe_dynamic_extrapolated_positions:
+  #     categorical: [True, False]
+  # observe_global_turn_rate:
+  #     categorical: [True, False]
+  # observe_heading:
+  #     categorical: [True, False]
+  # observe_is_collision:
+  #     categorical: [True, False]
+  # observe_is_friction_violation:
+  #     categorical: [True, False]
+  # observe_is_goal_reached:
+  #     categorical: [True, False]
+  # observe_is_off_road:
+  #     categorical: [True, False]
+  # observe_is_time_out:
+  #     categorical: [True, False]
+  # observe_lane_circ_surrounding:
+  #     categorical: [True, False]
+  # observe_lane_rect_surrounding:
+  #     categorical: [True, False]
+  # observe_lat_offset:
+  #     categorical: [True, False]
+  # observe_left_marker_distance:
+  #     categorical: [True, False]
+  # observe_left_road_edge_distance:
+  #     categorical: [True, False]
+  # observe_lidar_elli_surrounding:
+  #     categorical: [True, False]
+  # observe_remaining_steps:
+  #     categorical: [True, False]
+  # observe_right_marker_distance:
+  #     categorical: [True, False]
+  # observe_right_road_edge_distance:
+  #     categorical: [True, False]
+  # observe_static_extrapolated_positions:
+  #     categorical: [True, False]
+  # observe_steering_angle:
+  #     categorical: [True, False]
+  # observe_v_ego:
+  #     categorical: [True, False]
+  # relax_is_goal_reached:
+  #     categorical: [True, False]
+
+# A user-specified file for setting the sampling methods and intervals when optimizing environment configurations.
+# Currently supported sampling methods: categorical, uniform, loguniform.
+# During execution, this setting is read in by `./run_stable_baselines.py` and
+# passed to `./utils_run/configs_opt.py` for optimization.
+
+sampling_setting_reward_configs:
+#   reward_friction_violation:
+#     uniform: [-10.0, 0.0]
+#   reward_get_close_coefficient:
+#     loguniform: [0.1, 1]
+#   reward_goal_reached:
+#     uniform: [0.0, 100.0]
+#   reward_off_road:
+#     uniform: [-10.0, 0.0]

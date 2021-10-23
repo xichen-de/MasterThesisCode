@@ -1,0 +1,11 @@
+batch_size: 128
+data_path: /home/chenx/project/master_thesis_xi_chen/data/supervised_data/data.npz
+num_epochs: 100
+reward_network:
+- 200
+- 200
+save_interval: 10
+save_path: /home/chenx/project/master_thesis_xi_chen/pretrain_network
+transition_network:
+- 200
+- 200

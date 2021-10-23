@@ -1,0 +1,6 @@
+model_checkpoint_path: "pretrain-4200"
+all_model_checkpoint_paths: "pretrain-2520"
+all_model_checkpoint_paths: "pretrain-2940"
+all_model_checkpoint_paths: "pretrain-3360"
+all_model_checkpoint_paths: "pretrain-3780"
+all_model_checkpoint_paths: "pretrain-4200"
