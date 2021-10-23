@@ -1,0 +1,15 @@
+commonroad-v0:
+  n_timesteps: !!float 1e6
+  policy: 'MlpPolicy'
+  noise_type: 'adaptive-param'
+  noise_std: 0.2
+  memory_limit: 1000000
+  normalize_observations: True
+  normalize_returns: False
+  gamma: 0.999
+  batch_size: 256
+  use_plan: True
+  plan_path: '/home/chenx/project/master_thesis_xi_chen/data/exp'
+  use_model_update: True
+  pretrain_path: '/home/chenx/project/master_thesis_xi_chen/pretrain_network/2020_10_20_14_10_15'
+  train_pretrain: True

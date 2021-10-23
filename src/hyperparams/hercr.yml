@@ -1,0 +1,13 @@
+commonroad-v1:
+  n_timesteps: !!float 1e6
+  policy: 'MlpPolicy'
+  noise_type: 'adaptive-param'
+  noise_std: 0.2
+  buffer_size: 1000000
+  normalize_observations: True
+  normalize_returns: False
+  gamma: 0.999
+  batch_size: 256
+  goal_selection_strategy: 'final'
+  model_class: 'ddpg'
+  n_sampled_goal: 1
