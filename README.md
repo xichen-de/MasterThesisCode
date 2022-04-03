@@ -1,6 +1,6 @@
 # Master Thesis Xi Chen
 
-This repository contains the documents and software package the author wrote or implemented during her master thesis "Learning Driving Policies Using Reinforcement Learning Combined with Motion Planning". 
+This repository contains the documents and software package the author wrote or implemented during her master thesis "Learning Driving Policies Using Reinforcement Learning Combined with Motion Planning". The simulation environment is being further developed and published here: https://commonroad.in.tum.de/commonroad-rl
 
 A method combining [Deep Deterministic Policy Gradient](https://arxiv.org/abs/1509.02971) (DDPG) with a sampling-based trajectory planner, the [Reactive Planner](https://gitlab.lrz.de/cps/reactive-planner) is developed. This repository also includes the first attempt of applying modified [Hindsight Experience Replay](https://arxiv.org/abs/1707.01495) (HER) on [commonroad-rl](https://gitlab.lrz.de/ss20-mpfav-rl/commonroad-rl) environment. The DDPG and HER algorithms are based on the implementation of [Stable-Baselines](https://github.com/hill-a/stable-baselines).
 
